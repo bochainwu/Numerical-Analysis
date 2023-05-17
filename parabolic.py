@@ -16,10 +16,10 @@ def parabolic_interpolation(f, x1, x2, x3, epsilon=1e-6, max_iterations=2):
     # Initial points
     
     for i in range(max_iterations):
-        x4 = x2 - 0.5*((x2-x1)**2*(f(x2)-f(x3))-(x2-x3)**2*(f(x2)-f(x1))/(x2-x1)*(f(x2)-f(x3))-(x2-x3)*(f(x2)-f(x1)))
-        print(x1, x2, x3, x4)
+        x4 = x2 - 0.5*((((x2-x1)**2)*(f(x2)-f(x3))-((x2-x3)**2)*(f(x2)-f(x1)))/((x2-x1)*(f(x2)-f(x3))-(x2-x3)*(f(x2)-f(x1))))
+        print(x1, x2, x3, x4, f(x4))
         if x4 < x2:
-            if f(x4) < f2:
+            if f(x4) < f(x2):
                 x3 = x2
                 x2 = x4
             else:
@@ -52,4 +52,4 @@ x3 = 3
 minimum = parabolic_interpolation(f, x1, x2, x3)
 
 # Print the result
-print("Minimum found at x =", minimum)
+print(minimum, f(minimum))

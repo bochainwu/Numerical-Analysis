@@ -3,8 +3,8 @@ def f(x):
 
 x0 ,x1 = 0.5, 1.5
 
-for i in range(1):
+for i in range(3):
     x2 = x1 - (f(x1)*(x0-x1)/(f(x0)-f(x1)))
-    print(x0, x1, x2, abs((x2-x1)/x2)*100,"%")
+    print(x0, x1, round(x2, 5), abs((x2-x1)/x2)*100,"%")
     x0 = x1
     x1 = x2
